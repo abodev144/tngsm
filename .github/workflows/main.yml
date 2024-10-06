@@ -18,9 +18,18 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: Install dependencies
+    - name: Install Android SDK and dependencies
       run: |
         sudo apt update
+        sudo apt install -y wget unzip
+        wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O sdk-tools.zip
+        unzip sdk-tools.zip -d $HOME/android-sdk
+        yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses
+        yes | $HOME/android-sdk/tools/bin/sdkmanager --update
+        $HOME/android-sdk/tools/bin/sdkmanager "platforms;android-29" "build-tools;30.0.3"
+
+    - name: Install other dependencies
+      run: |
         sudo apt install -y python3-pip build-essential git openjdk-11-jdk
         pip install --upgrade pip
         pip install cython buildozer requests
