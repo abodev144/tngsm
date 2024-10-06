@@ -21,7 +21,7 @@ jobs:
     - name: Install Android SDK and dependencies
       run: |
         sudo apt update
-        sudo apt install -y wget unzip
+        sudo apt install -y wget unzip openjdk-8-jdk
         wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O sdk-tools.zip
         unzip sdk-tools.zip -d $HOME/android-sdk
         yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses
@@ -30,7 +30,7 @@ jobs:
 
     - name: Install other dependencies
       run: |
-        sudo apt install -y python3-pip build-essential git openjdk-11-jdk
+        sudo apt install -y python3-pip build-essential git
         pip install --upgrade pip
         pip install cython buildozer requests
 
