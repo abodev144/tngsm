@@ -28,7 +28,7 @@ jobs:
         touch ~/.android/repositories.cfg
         yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses # Accept licenses
         yes | $HOME/android-sdk/tools/bin/sdkmanager --update
-        yes | $HOME/android-sdk/tools/bin/sdkmanager "platforms;android-29" "build-tools;30.0.3" "extras;android;m2repository" "extras;google;m2repository" "platform-tools"
+        yes | $HOME/android-sdk/tools/bin/sdkmanager "platforms;android-29" "build-tools;35.0.0" "extras;android;m2repository" "extras;google;m2repository" "platform-tools"
 
     - name: Install other dependencies
       run: |
