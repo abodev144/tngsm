@@ -26,9 +26,18 @@ jobs:
         unzip sdk-tools.zip -d $HOME/android-sdk
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
-        yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses # Accept licenses
+        yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses
         yes | $HOME/android-sdk/tools/bin/sdkmanager --update
-        yes | $HOME/android-sdk/tools/bin/sdkmanager "platforms;android-29" "build-tools;35.0.0" "extras;android;m2repository" "extras;google;m2repository" "platform-tools"
+        yes | $HOME/android-sdk/tools/bin/sdkmanager "platforms;android-29" "build-tools;34.0.0" "extras;android;m2repository" "extras;google;m2repository" "platform-tools"
+
+    - name: Check AIDL installation
+      run: |
+        if [ -f "$HOME/android-sdk/build-tools/34.0.0/aidl" ]; then
+          echo "AIDL is installed."
+        else
+          echo "AIDL is not installed."
+          exit 1
+        fi
 
     - name: Install other dependencies
       run: |
