@@ -24,7 +24,9 @@ jobs:
         sudo apt install -y wget unzip
         wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O sdk-tools.zip
         unzip sdk-tools.zip -d $HOME/android-sdk
-        yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses
+        mkdir -p ~/.android
+        touch ~/.android/repositories.cfg
+        yes | $HOME/android-sdk/tools/bin/sdkmanager --licenses # Accept licenses
         yes | $HOME/android-sdk/tools/bin/sdkmanager --update
         yes | $HOME/android-sdk/tools/bin/sdkmanager "platforms;android-29" "build-tools;30.0.3" "extras;android;m2repository" "extras;google;m2repository" "platform-tools"
 
